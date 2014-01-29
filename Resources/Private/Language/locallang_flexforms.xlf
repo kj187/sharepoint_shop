@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-01-29T14:41:56Z" product-name="sharepoint_shop">
+		<header/>
+		<body>
+
+			<trans-unit id="spShopButton.sheetTitle">
+				<source>Button Sheettitle</source>
+			</trans-unit>
+			<trans-unit id="spShopButton.title">
+				<source>Button title</source>
+			</trans-unit>
+			
+		</body>
+	</file>
+</xliff>
