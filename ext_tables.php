@@ -26,48 +26,7 @@
 
 if (!defined('TYPO3_MODE')) die ('Access denied.');
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	$_EXTKEY,
-	'Button',
-	'SP Shop : Button'
-);
-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Sharepoint Shop');
 
-$defaultShowitems = trim('
-	--palette--;LLL:EXT:cms/locallang_ttc.xml:palette.general;general,
-	--palette--;LLL:EXT:cms/locallang_ttc.xml:palette.header;header,
-	pi_flexform,
-
-	--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,
-		--palette--;LLL:EXT:cms/locallang_ttc.xml:palette.visibility;visibility,
-		--palette--;LLL:EXT:cms/locallang_ttc.xml:palette.access;access,
-
-	--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.extended, tx_gridelements_container, tx_gridelements_columns
-');
-
-/*******************************************************************************************************************
- * Define all FCEs
- *
- */
-
-$flexibleContentElements = array(
-
-	// SPButton FCE
-	'FCE_Button' => array(
-		'title' => 'FCE :: SP Shop Button',
-		'pluginSignatureKey' => 'button',
-		'flexFormFile' => 'Button.xml',
-		'defaultShowitems' => $defaultShowitems
-	),
-
-);
-
-foreach ($flexibleContentElements as $key => $data) {
-	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin($_EXTKEY, $key, $data['title']);
-	$pluginSignature = str_replace('_','',$_EXTKEY) . '_fce_' . strtolower($data['pluginSignatureKey']);
-	$TCA['tt_content']['types'][$pluginSignature]['showitem'] = $data['defaultShowitems'];
-	$TCA['tt_content']['columns']['pi_flexform']['config']['ds'][',' . $pluginSignature] = 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/FCE/' . $data['flexFormFile'];
-}
 
 ?>

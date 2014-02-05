@@ -4,8 +4,8 @@
 		<header/>
 		<body>
 
-			<trans-unit id="tx_sharepointshop_domain_model_button">
-				<source>Button</source>
+			<trans-unit id="xxx">
+				<source>xxx</source>
 			</trans-unit>
 
 		</body>
