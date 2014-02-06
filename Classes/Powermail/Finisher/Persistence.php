@@ -1,5 +1,5 @@
 <?php
-namespace Aijko\SharepointShop\Finisher;
+namespace Aijko\SharepointShop\Powermail\Finisher;
 
 /***************************************************************
  *  Copyright notice
