@@ -1,0 +1,2 @@
+  # cat=basic; type=string; label=Article list identifier: The article list identifier, required for article mapping - example: {BF306B2A-CBB7-4284-A17C-BEC46F3FE6C1}
+sharepointServer.list.article.identifier =

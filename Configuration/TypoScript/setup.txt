@@ -1,0 +1,11 @@
+plugin.tx_powermail {
+	settings {
+		setup {
+			prefill {
+				sharepointproduct = TEXT
+				sharepointproduct.data = GP:tx_sharepointshop|product
+				sharepointproduct.htmlSpecialChars  = 1
+			}
+		}
+	}
+}

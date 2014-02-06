@@ -32,7 +32,16 @@ $extbaseObjectContainer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('
 $extbaseObjectContainer->registerImplementation('Aijko\SharepointConnector\Service\SharepointDriverInterface', 'Aijko\SharepointConnector\Service\Driver\Soap');
 
 // SignalSlot
-#$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
+$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
 #$signalSlotDispatcher->connect('Tx_Powermail_Controller_FormsController', 'createActionBeforeRenderView', 'Aijko\\SharepointShop\\Finisher\\Persistence', 'process');
+$signalSlotDispatcher->connect('Tx_Powermail_Controller_FormsController', 'BeforeRenderView', 'Aijko\\SharepointShop\\Powermail\\Controller\\FormsController', 'beforeRenderView');
+
+// Page TSconfig
+$GLOBALS['TYPO3_CONF_VARS']['BE']['defaultPageTSconfig'] .= "\n" . '<INCLUDE_TYPOSCRIPT: source="FILE: EXT:' . $_EXTKEY . '/Configuration/TSconfig/Page/Default.ts">';
+
+// Hooks
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['rtehtmlarea']['plugins']['TYPO3Link']['additionalAttributes'] .= ',data-sharepoint-product';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/rtehtmlarea/mod3/class.tx_rtehtmlarea_browse_links.php']['extendJScode'][] = 'Aijko\SharepointShop\Hook\BrowseLinks';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/rtehtmlarea/mod3/class.tx_rtehtmlarea_browse_links.php']['addAttributeFields'][] = 'Aijko\SharepointShop\Hook\BrowseLinks';
 
 ?>
